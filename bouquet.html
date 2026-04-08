@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buket untuk Della</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:italic,wght@400;700&family=Poppins:wght@300&display=swap');
+
+        body {
+            background-color: #fff0f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 400px;
+        }
+
+        .flower-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #ff4d6d;
+        }
+
+        #message-box {
+            min-height: 80px;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #555;
+            transition: all 0.5s;
+        }
+
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+        }
+
+        button:active { transform: scale(0.95); }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="flower-icon">💐</span>
+    <h2>Buket Virtual Untukmu</h2>
+    
+    <div id="message-box">
+        Klik tombol di bawah untuk mengambil bunga...
+    </div>
+
+    <button onclick="pickFlower()">Ambil Bunga 🌷</button>
+</div>
+
+<script>
+    const messages = [
+        "Bunga pertama: Terimakasih udah hadir di kehidupan ku💕",
+        "Bunga kedua: Aku masih inget banget waktu kamu kasih aku susu kotak pas kunjungan di SMP2 Mojotengah",
+        "Bunga ketiga:  Semoga kamu selalu bahagia💖",
+        "Bunga keempat: Kamu harus kuat jalani hidup yang penuh tekanan semoga Allah selalu berikan kemudahan ",
+        "Bunga kelima: kalo dunia bikin kamu terluka aku siap ko jadi tempat tuk bercerita",
+    ];
+
+    let currentMessage = 0;
+    const box = document.getElementById('message-box');
+    const icons = ["🌸", "🌹", "🌺", "🌻", "🌼"];
+
+    function pickFlower() {
+        if (currentMessage < messages.length) {
+            box.style.opacity = 0;
+            setTimeout(() => {
+                box.innerText = messages[currentMessage];
+                document.querySelector('.flower-icon').innerText = icons[currentMessage];
+                box.style.opacity = 1;
+                currentMessage++;
+            }, 300);
+        } else {
+            box.innerText = "Buket ini mungkin virtual, tapi tulusnya nyata. ❤️";
+            document.querySelector('.flower-icon').innerText = "💝";
+        }
+    }
+</script>
+
+</body>
+</html>
